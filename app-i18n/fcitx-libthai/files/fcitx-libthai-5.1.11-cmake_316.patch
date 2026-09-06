@@ -4,6 +4,6 @@ Raise cmake_minimum_required for ECM's CMake < 3.16 compatibility warning.
 @@ -1,4 +1,4 @@
 -cmake_minimum_required(VERSION 3.12)
 +cmake_minimum_required(VERSION 3.16)
- project(fcitx5-libthai VERSION 5.1.10)
+ project(fcitx5-libthai VERSION 5.1.11)
  
  set(REQUIRED_FCITX_VERSION 5.1.12)
