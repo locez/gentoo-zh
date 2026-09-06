@@ -72,7 +72,7 @@ src_install() {
 
 	# Set proper permissions and pax-mark binaries
 	local bin
-	for bin in zen zen-bin updater glxtest vaapitest pingsender ; do
+	for bin in zen zen-bin updater gfxtest pingsender ; do
 		[[ -f ${ED}${destdir}/${bin} ]] || continue
 		fperms +x "${destdir}/${bin}"
 		pax-mark m "${ED}${destdir}/${bin}"
