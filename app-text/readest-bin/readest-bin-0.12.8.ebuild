@@ -34,5 +34,7 @@ src_unpack() {
 src_install() {
 	dobin "${MY_PN}"
 	domenu squashfs-root/Readest.desktop
-	doicon -s 256 squashfs-root/readest.png
+	# Upstream renamed the icon to Readest.png, but the desktop entry still says
+	# Icon=readest.
+	newicon -s 256 squashfs-root/Readest.png readest.png
 }
