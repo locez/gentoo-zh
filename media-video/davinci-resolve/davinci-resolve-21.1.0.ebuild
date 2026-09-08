@@ -5,7 +5,7 @@ EAPI=8
 
 inherit desktop udev xdg
 
-ZIP_NAME="DaVinci_Resolve_${PV}_Linux"
+ZIP_NAME="DaVinci_Resolve_${PV%.0}_Linux"
 RUN_NAME="${ZIP_NAME}.run"
 
 DESCRIPTION="Professional video editing, color, effects and audio post-processing"
@@ -221,11 +221,11 @@ src_prepare() {
 	done < <(find "${squashfs}" -type f \
 		\( -name "libc++abi.so*" \
 		-o -name "libgcc_s.so.1" \
-		-o -name "libCrmSdk.so.2.10" \
-		-o -name "libcrypto.so.1.1" \
+		-o -name "libCrmSdk.so.*" \
+		-o -name "libcrypto.so.*" \
 		-o -name "libcurl.so" \
 		-o -name "libsharpyuv.so.0.1.1" \
-		-o -name "libssl.so.1.1" \
+		-o -name "libssl.so.*" \
 		-o -name "libwebpdecoder.so.3.1.10" \
 		-o -name "libxmlsec1-openssl.so" \) -print0)
 
