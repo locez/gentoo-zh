@@ -120,4 +120,9 @@ pkg_postinst() {
 
 	optfeature "Git repository support" dev-vcs/git
 	optfeature "secret/keyring storage" virtual/secret-service
+
+	use wayland || return 0
+
+	elog "The desktop pet does not work under Wayland."
+	elog "Run 'chatgpt --ozone-platform=x11' to use it."
 }
