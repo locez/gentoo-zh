@@ -3,10 +3,10 @@
 
 EAPI="8"
 ETYPE="sources"
-K_WANT_GENPATCHES="base extras"
+K_WANT_GENPATCHES="base extras experimental"
 K_SECURITY_UNSUPPORTED="1"
 CJKTTY_PV="7.2"
-K_GENPATCHES_VER="3"
+K_GENPATCHES_VER="5"
 K_NO_VERSION_CHECK=0
 
 inherit kernel-2 cjktty
