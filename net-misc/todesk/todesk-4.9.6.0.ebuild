@@ -7,7 +7,7 @@ inherit desktop unpacker systemd xdg
 
 DESCRIPTION="Remote control and team work"
 HOMEPAGE="https://www.todesk.com/"
-SRC_URI="https://web.archive.org/web/20260329112316/https://dl.todesk.com/linux/todesk-v${PV}-amd64.deb"
+SRC_URI="https://web.archive.org/web/20260908130616/https://dl.todesk.com/linux/todesk-v${PV}-amd64.deb"
 
 S="${WORKDIR}"
 LICENSE="todesk"
