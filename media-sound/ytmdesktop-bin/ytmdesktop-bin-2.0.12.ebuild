@@ -42,9 +42,7 @@ RESTRICT="mirror strip"
 QA_PREBUILT="
 	/opt/${MY_PN}/chrome-sandbox
 	/opt/${MY_PN}/chrome_crashpad_handler
-	/opt/${MY_PN}/libEGL.so
 	/opt/${MY_PN}/libffmpeg.so
-	/opt/${MY_PN}/libGLESv2.so
 	/opt/${MY_PN}/libvk_swiftshader.so
 	/opt/${MY_PN}/libvulkan.so.1
 	/opt/${MY_PN}/${D_PN}
