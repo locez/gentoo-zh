@@ -12,7 +12,7 @@ BASE_P=linux-${PV%.*}
 PATCH_PV=${PV%_p*}
 PATCHSET=linux-gentoo-patches-7.1.9
 BINPKG=${P/-bin}-1
-SHA256SUM_DATE=20260902
+SHA256SUM_DATE=20260907
 
 DESCRIPTION="Pre-built distribution kernel with the cjktty patch for CJK on the console"
 HOMEPAGE="
