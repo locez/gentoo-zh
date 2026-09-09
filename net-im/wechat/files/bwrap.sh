@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+# Set during ebuild configuration
+EBUILD_WAYLAND=false
+
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
@@ -126,6 +129,12 @@ read_bwrap_flags "${WECHAT_BWRAP_FLAGS_FILE}" bwrap_flags
 
 GCC_LIB_PATH="$(gcc_runtime_path)"
 
+if "${EBUILD_WAYLAND}" && [[ -n "${WAYLAND_DISPLAY:-}" ]]; then
+    QT_QPA_PLATFORM="${QT_QPA_PLATFORM:-wayland;xcb}"
+else
+    QT_QPA_PLATFORM="${QT_QPA_PLATFORM:-xcb}"
+fi
+
 require_path /etc/localtime
 require_path /etc/machine-id
 require_path /etc/resolv.conf
@@ -189,7 +198,7 @@ declare -a bwrap_cmd=(
     --setenv XDG_STATE_HOME "${WECHAT_STATE_HOME}"
     --setenv XDG_DOWNLOAD_DIR "${WECHAT_DOWNLOAD_DIR}"
     --setenv QT_AUTO_SCREEN_SCALE_FACTOR 1
-    --setenv QT_QPA_PLATFORM "${QT_QPA_PLATFORM:-wayland;xcb}"
+    --setenv QT_QPA_PLATFORM "${QT_QPA_PLATFORM}"
     --setenv GTK_USE_PORTAL 1
 )
 

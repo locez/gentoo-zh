@@ -18,7 +18,7 @@ LICENSE="all-rights-reserved"
 
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm64 ~loong"
-IUSE="bwrap"
+IUSE="bwrap wayland"
 
 RESTRICT="strip mirror bindist"
 BDEPEND="
@@ -29,6 +29,7 @@ RDEPEND="
 	app-arch/bzip2
 	app-crypt/mit-krb5
 	dev-libs/nss
+	dev-libs/wayland
 	media-libs/libpulse
 	media-libs/mesa
 	net-print/cups
@@ -74,20 +75,23 @@ src_install() {
 	dodir /opt/wechat
 	cp -r opt/wechat/. "${D}/opt/wechat/" || die
 
+	local launcher=wechat.sh
 	if use bwrap; then
-		newbin "${FILESDIR}/bwrap.sh" wechat
+		launcher=bwrap.sh
 		exeinto /opt/wechat
 		doexe "${FILESDIR}/xdg-open.sh"
-	else
-		newbin "${FILESDIR}/wechat.sh" wechat
 	fi
 
-	local exec_envs=( "QT_AUTO_SCREEN_SCALE_FACTOR=1" "\"QT_QPA_PLATFORM=wayland;xcb\"" )
+	cp "${FILESDIR}/${launcher}" "${T}" || die
+	if use wayland; then
+		sed -i -e "/^EBUILD_WAYLAND=/s/false/true/" "${T}/${launcher}" || die
+	fi
+	newbin "${T}/${launcher}" wechat
 
 	sed -i \
 		-e "s|^Icon=.*|Icon=wechat|" \
 		-e "s|^Categories=.*|Categories=Network;InstantMessaging;Chat;|" \
-		-e "s|^Exec=.*|Exec=env ${exec_envs[*]} /usr/bin/wechat %U|" \
+		-e "s|^Exec=.*|Exec=/usr/bin/wechat %U|" \
 		usr/share/applications/wechat.desktop || die
 	domenu usr/share/applications/wechat.desktop
 
