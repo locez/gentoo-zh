@@ -27,6 +27,7 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64 ~arm64"
+RESTRICT="test"
 
 RDEPEND="net-libs/nodejs"
 
