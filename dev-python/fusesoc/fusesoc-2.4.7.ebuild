@@ -26,7 +26,8 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	>=dev-python/edalize-0.4.1[${PYTHON_USEDEP}]
-	>=dev-python/pyparsing-2.3.1[${PYTHON_USEDEP}]
+	>=dev-python/pydantic-2.13.3[${PYTHON_USEDEP}]
+	>=dev-python/pyparsing-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-6.0[${PYTHON_USEDEP}]
 	>=dev-python/simplesat-0.9.1[${PYTHON_USEDEP}]
 	dev-python/fastjsonschema[${PYTHON_USEDEP}]
